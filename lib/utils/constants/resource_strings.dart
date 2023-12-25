@@ -1,4 +1,4 @@
-class TResources {
+class TResourceStrings {
   static const _baseJson = 'assets/jsons';
 
   // JSON
