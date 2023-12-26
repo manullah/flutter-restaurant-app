@@ -52,10 +52,22 @@ class _ArticleDetailsState extends State<ArticleDetails> {
 
               // -- Place
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(Icons.place, size: TSizes.iconSm, color: TColors.darkGrey),
-                  const SizedBox(width: TSizes.xs),
-                  Text(widget.restaurant!.city, style: Theme.of(context).textTheme.bodySmall),
+                  Row(
+                    children: [
+                      const Icon(Icons.place, size: TSizes.iconSm, color: TColors.darkGrey),
+                      const SizedBox(width: TSizes.xs),
+                      Text(widget.restaurant!.city, style: Theme.of(context).textTheme.bodySmall),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text('${widget.restaurant!.rating}', style: Theme.of(context).textTheme.bodySmall),
+                      const SizedBox(width: TSizes.xs),
+                      const Icon(Icons.star, size: TSizes.iconSm, color: Colors.orange),
+                    ],
+                  ),
                 ],
               ),
 
