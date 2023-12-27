@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:restaurant_app/features/article/models/restaurant_model.dart';
+import 'package:restaurant_app/features/restaurant/models/restaurant_model.dart';
 import 'package:restaurant_app/utils/constants/resource_strings.dart';
 
-class ArticleRepository {
+class RestaurantRepository {
   Future<List<RestaurantModel>> getRestaurants() async {
     final String response = await rootBundle.loadString(TResourceStrings.restaurantsJson);
     final data = await json.decode(response);

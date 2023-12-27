@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/features/article/models/menu_model.dart';
-import 'package:restaurant_app/features/article/models/restaurant_model.dart';
-import 'package:restaurant_app/features/article/presentation/pages/article_details_page.dart';
+import 'package:restaurant_app/features/restaurant/presentation/pages/restaurants_page.dart';
 import 'package:restaurant_app/utils/constants/paths.dart';
-import 'package:restaurant_app/features/article/presentation/pages/articles_page.dart';
 import 'package:restaurant_app/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -23,8 +20,8 @@ class App extends StatelessWidget {
       // -- Routes
       initialRoute: TPaths.articles,
       routes: {
-        TPaths.articles: (context) => const ArticlesPage(),
-        TPaths.articleDetails: (context) => ArticleDetails(restaurant: ModalRoute.of(context)!.settings.arguments as RestaurantModel),
+        TPaths.articles: (context) => const RestaurantsPage(),
+        // TPaths.articleDetails: (context) => RestaurantDetails(restaurant: ModalRoute.of(context)!.settings.arguments as RestaurantModel),
       },
     );
   }

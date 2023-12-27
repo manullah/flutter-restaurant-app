@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/core/models/name_model.dart';
-import 'package:restaurant_app/features/article/models/menu_model.dart';
+import 'package:restaurant_app/features/restaurant/models/menu_model.dart';
 import 'package:restaurant_app/utils/constants/colors.dart';
 import 'package:restaurant_app/utils/constants/sizes.dart';
 

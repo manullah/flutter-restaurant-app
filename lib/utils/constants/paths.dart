@@ -1,4 +1,4 @@
 class TPaths {
-  static const String articles = '/articles';
-  static const String articleDetails = '/articles/details';
+  static const String articles = '/restaurants';
+  static const String articleDetails = '/restaurants/details';
 }

@@ -11,9 +11,6 @@ class MenuModel {
     required this.drinks,
   });
 
-  // -- Empty state
-  static MenuModel empty() => MenuModel(foods: [], drinks: []);
-
   factory MenuModel.fromJson(Map<String, dynamic> map) {
     if (map.isEmpty) return MenuModel.empty();
 
@@ -22,4 +19,7 @@ class MenuModel {
       drinks: (map['drinks'] as List<dynamic>).map((e) => NameModel.fromJson(e)).toList(),
     );
   }
+
+  // -- Empty state
+  static MenuModel empty() => MenuModel(foods: [], drinks: []);
 }

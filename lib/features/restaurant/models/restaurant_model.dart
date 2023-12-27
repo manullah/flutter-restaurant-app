@@ -1,4 +1,4 @@
-import 'package:restaurant_app/features/article/models/menu_model.dart';
+import 'package:restaurant_app/features/restaurant/models/menu_model.dart';
 
 class RestaurantModel {
   String id;

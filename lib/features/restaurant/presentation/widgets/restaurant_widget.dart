@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/features/article/models/restaurant_model.dart';
+import 'package:restaurant_app/features/restaurant/models/restaurant_details_model.dart';
 import 'package:restaurant_app/utils/constants/colors.dart';
 import 'package:restaurant_app/utils/constants/paths.dart';
 import 'package:restaurant_app/utils/constants/sizes.dart';
 
 class RestaurantWidget extends StatelessWidget {
-  final RestaurantModel restaurant;
+  final RestaurantDetailsModel restaurant;
 
   const RestaurantWidget({
     required this.restaurant,
@@ -29,7 +29,7 @@ class RestaurantWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(TSizes.borderRadiusMd),
               child: Image.network(
-                restaurant.pictureId,
+                'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
                 height: TSizes.imageThumbSize,
                 fit: BoxFit.cover,
               ),
