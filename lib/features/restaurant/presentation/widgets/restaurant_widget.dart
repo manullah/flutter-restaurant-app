@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/features/restaurant/models/restaurant_details_model.dart';
+import 'package:restaurant_app/features/restaurant/models/restaurant_response.dart';
 import 'package:restaurant_app/utils/constants/colors.dart';
-import 'package:restaurant_app/utils/constants/paths.dart';
 import 'package:restaurant_app/utils/constants/sizes.dart';
 
 class RestaurantWidget extends StatelessWidget {
-  final RestaurantDetailsModel restaurant;
-
   const RestaurantWidget({
-    required this.restaurant,
     Key? key,
+    required this.restaurant,
   }) : super(key: key);
+
+  final RestaurantResponse restaurant;
 
   @override
   Widget build(BuildContext context) {
-    void redirectDetails() {
-      Navigator.pushNamed(context, TPaths.articleDetails, arguments: restaurant);
-    }
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // -- Image
-        GestureDetector(
-          onTap: redirectDetails,
-          child: SizedBox(
-            width: TSizes.imageThumbSize * 1.5,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(TSizes.borderRadiusMd),
-              child: Image.network(
-                'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
-                height: TSizes.imageThumbSize,
-                fit: BoxFit.cover,
-              ),
+        SizedBox(
+          width: TSizes.imageThumbSize * 1.5,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(TSizes.borderRadiusMd),
+            child: Image.network(
+              'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
+              height: TSizes.imageThumbSize,
+              fit: BoxFit.cover,
             ),
           ),
         ),
@@ -44,12 +36,9 @@ class RestaurantWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               // -- Title
-              GestureDetector(
-                onTap: redirectDetails,
-                child: Text(
-                  restaurant.name,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
+              Text(
+                restaurant.name,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
 
               const SizedBox(height: TSizes.xs),

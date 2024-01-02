@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/utils/constants/colors.dart';
-import 'package:restaurant_app/utils/theme/custom_themes/elevated_button_theme.dart';
 import 'package:restaurant_app/utils/theme/custom_themes/text_field_theme.dart';
 import 'package:restaurant_app/utils/theme/custom_themes/text_theme.dart';
 
@@ -14,7 +13,6 @@ class TAppTheme {
     primaryColor: TColors.primary,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TTextTheme.lightTextTheme,
-    elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     inputDecorationTheme: TTextFieldTheme.lighTTextFieldTheme,
   );
 
@@ -25,7 +23,6 @@ class TAppTheme {
     primaryColor: TColors.primary,
     scaffoldBackgroundColor: Colors.black,
     textTheme: TTextTheme.darkTextTheme,
-    elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     inputDecorationTheme: TTextFieldTheme.darkInputDecorationTheme,
   );
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/features/restaurant/presentation/pages/restaurants_page.dart';
-import 'package:restaurant_app/utils/constants/paths.dart';
 import 'package:restaurant_app/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -17,12 +16,7 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
 
-      // -- Routes
-      initialRoute: TPaths.articles,
-      routes: {
-        TPaths.articles: (context) => const RestaurantsPage(),
-        // TPaths.articleDetails: (context) => RestaurantDetails(restaurant: ModalRoute.of(context)!.settings.arguments as RestaurantModel),
-      },
+      home: const RestaurantsPage(),
     );
   }
 }
