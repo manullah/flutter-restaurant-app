@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/features/home/presentation/pages/settings_page.dart';
 import 'package:restaurant_app/features/restaurant/presentation/pages/favorite_page.dart';
 import 'package:restaurant_app/features/restaurant/presentation/pages/restaurants_page.dart';
 import 'package:restaurant_app/utils/constants/text_strings.dart';
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: TTextStrings.home),
           NavigationDestination(icon: Icon(Icons.favorite), label: TTextStrings.myFavorites),
+          NavigationDestination(icon: Icon(Icons.settings), label: TTextStrings.settings),
         ],
       ),
 
@@ -33,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       body: [
         const RestaurantsPage(),
         const FavoritePage(),
+        const SettingsPage(),
       ][currentPageIndex],
     );
   }

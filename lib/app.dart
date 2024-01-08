@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/home_page.dart';
+import 'package:restaurant_app/features/home/presentation/pages/home_page.dart';
 import 'package:restaurant_app/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
