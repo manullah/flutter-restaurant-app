@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/features/restaurant/presentation/pages/restaurants_page.dart';
+import 'package:restaurant_app/home_page.dart';
 import 'package:restaurant_app/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
 
-      home: const RestaurantsPage(),
+      home: const HomePage(),
     );
   }
 }

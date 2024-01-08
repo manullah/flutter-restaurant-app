@@ -16,9 +16,11 @@ class RestaurantDetailsPage extends StatelessWidget {
   const RestaurantDetailsPage({
     super.key,
     required this.id,
+    this.isPop = false,
   });
 
   final String id;
+  final bool isPop;
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +70,12 @@ class RestaurantDetailsPage extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             setState(() {
-                                              if (MainBoxMixin.isMyFavorite(id)) {
-                                                MainBoxMixin.removeFavorite(id);
-                                              } else {
-                                                MainBoxMixin.addFavorite(id);
-                                              }
+                                              MainBoxMixin.addFavorite(id);
                                             });
 
                                             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                               duration: Duration(seconds: 1),
-                                              content: Text(TTextStrings.successfullyFavored),
+                                              content: Text(TTextStrings.successfully),
                                             ));
                                           },
                                           child: SizedBox(

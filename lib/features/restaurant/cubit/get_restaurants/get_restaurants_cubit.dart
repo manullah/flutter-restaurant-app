@@ -10,6 +10,11 @@ class GetRestaurantsCubit extends Cubit<GetRestaurantsState> {
   GetRestaurantsCubit(this.restaurantApiService) : super(const _Loading());
   final RestaurantApiService restaurantApiService;
 
+  Future<void> reFetchRestaurants() async {
+    emit(const _Loading());
+    fetchRestaurants();
+  }
+
   Future<void> fetchRestaurants() async {
     final data = await restaurantApiService.fetchRestaurants();
 

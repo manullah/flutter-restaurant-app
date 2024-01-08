@@ -46,12 +46,12 @@ mixin class MainBoxMixin {
   }
 
   static void addFavorite(String id) async {
-    final newList = [...getFavorites(), id];
-    addData(MainBoxKeys.favorite, newList);
-  }
-
-  static void removeFavorite(String id) async {
-    final newList = [...getFavorites(), id].where((element) => element != id).toList();
-    addData(MainBoxKeys.favorite, newList);
+    if (isMyFavorite(id)) {
+      final newList = getFavorites().where((element) => element != id).toList();
+      addData(MainBoxKeys.favorite, newList);
+    } else {
+      final newList = [...getFavorites(), id];
+      addData(MainBoxKeys.favorite, newList);
+    }
   }
 }
