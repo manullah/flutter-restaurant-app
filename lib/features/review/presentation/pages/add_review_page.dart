@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restaurant_app/features/restaurant/cubit/get_restaurant/get_restaurant_cubit.dart';
 import 'package:restaurant_app/features/review/cubit/post_review/post_review_cubit.dart';
 import 'package:restaurant_app/features/review/data/review_api_service.dart';
 import 'package:restaurant_app/utils/constants/sizes.dart';
@@ -51,9 +50,9 @@ class AddReviewPage extends StatelessWidget {
                         width: double.infinity,
                         child: BlocListener<PostReviewCubit, PostReviewState>(
                           listener: (_, state) {
-                            state.whenOrNull(success: (data) {
-                              Navigator.pop(context);
-                            });
+                            state.whenOrNull(
+                              success: (data) => Navigator.pop(context),
+                            );
                           },
                           child: ElevatedButton(
                             onPressed: () {

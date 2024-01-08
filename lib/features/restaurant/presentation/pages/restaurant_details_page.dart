@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restaurant_app/core/hive_box.dart';
+import 'package:restaurant_app/core/widgets/loading_widget.dart';
 import 'package:restaurant_app/features/restaurant/cubit/get_restaurant/get_restaurant_cubit.dart';
 import 'package:restaurant_app/features/restaurant/data/restaurant_api_service.dart';
 import 'package:restaurant_app/features/restaurant/presentation/widgets/menu_widget.dart';
@@ -34,24 +36,65 @@ class RestaurantDetailsPage extends StatelessWidget {
               child: BlocBuilder<GetRestaurantCubit, GetRestaurantState>(
                 builder: (context, state) {
                   return state.when(
-                    loading: () => const Text('Loading...'),
+                    loading: () => const LoadingWidget(),
                     failure: (message) => Text(message),
                     success: (data) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // -- Image
-                          SizedBox(
-                            width: double.infinity,
-                            height: 250,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(TSizes.borderRadiusMd),
-                              child: Image.network(
-                                'https://restaurant-api.dicoding.dev/images/large/${data.restaurant!.pictureId}',
-                                height: TSizes.imageThumbSize,
-                                fit: BoxFit.cover,
+                          Stack(
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                height: 250,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(TSizes.borderRadiusMd),
+                                  child: Image.network(
+                                    'https://restaurant-api.dicoding.dev/images/large/${data.restaurant!.pictureId}',
+                                    height: TSizes.imageThumbSize,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                            ),
+                              StatefulBuilder(
+                                builder: (context, setState) {
+                                  return Positioned(
+                                    right: TSizes.sm,
+                                    bottom: TSizes.sm,
+                                    child: ClipOval(
+                                      child: Material(
+                                        color: TColors.white,
+                                        child: InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              if (MainBoxMixin.isMyFavorite(id)) {
+                                                MainBoxMixin.removeFavorite(id);
+                                              } else {
+                                                MainBoxMixin.addFavorite(id);
+                                              }
+                                            });
+
+                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                              duration: Duration(seconds: 1),
+                                              content: Text(TTextStrings.successfullyFavored),
+                                            ));
+                                          },
+                                          child: SizedBox(
+                                            width: TSizes.xl * 1.5,
+                                            height: TSizes.xl * 1.5,
+                                            child: Icon(
+                                              Icons.favorite,
+                                              color: MainBoxMixin.isMyFavorite(id) ? Colors.red : Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
 
                           const SizedBox(height: TSizes.spaceBtwItem),
@@ -154,12 +197,8 @@ class RestaurantDetailsPage extends StatelessWidget {
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => AddReviewPage(id: data.restaurant!.id)),
-                                );
-
-                                context.read<GetRestaurantCubit>().fetchRestaurant(id);
+                                await Navigator.push(context, MaterialPageRoute(builder: (context) => AddReviewPage(id: id)));
+                                if (context.mounted) context.read<GetRestaurantCubit>().fetchRestaurant(id);
                               },
                               child: const Text('Add Review'),
                             ),

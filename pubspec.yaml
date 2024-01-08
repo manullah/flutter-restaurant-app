@@ -20,6 +20,10 @@ dependencies:
   json_annotation: ^4.8.1
   freezed_annotation: ^2.4.1
 
+  # Use hive to save local data
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,6 +35,9 @@ dev_dependencies:
   # Freezed
   freezed: ^2.4.6
   json_serializable: ^6.7.1
+
+  # Hive generator
+  hive_generator: ^2.0.1
 
 flutter:
   uses-material-design: true

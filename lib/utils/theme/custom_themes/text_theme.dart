@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utils/constants/colors.dart';
 
 class TTextTheme {
   TTextTheme._();

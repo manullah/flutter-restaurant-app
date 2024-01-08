@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restaurant_app/core/widgets/loading_widget.dart';
 import 'package:restaurant_app/features/restaurant/cubit/search_restaurants/search_restaurants_cubit.dart';
 import 'package:restaurant_app/features/restaurant/data/restaurant_api_service.dart';
 import 'package:restaurant_app/features/restaurant/presentation/pages/restaurant_details_page.dart';
@@ -59,7 +60,7 @@ class _RestaurantsPageState extends State<RestaurantsPage> {
                     BlocBuilder<SearchRestaurantsCubit, SearchRestaurantsState>(
                       builder: (_, state) {
                         return state.when(
-                          loading: () => const Text('Loading...'),
+                          loading: () => const LoadingWidget(),
                           failure: (message) => Text(message),
                           success: (data) {
                             if (data.founded == 0) {
